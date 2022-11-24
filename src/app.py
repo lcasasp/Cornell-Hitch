@@ -60,7 +60,6 @@ def get_user(user_id):
         return failure_response("user not found!")
     return success_response(user.serialize())
 
-
 @app.route("/api/users/<int:user_id>/", methods=["DELETE"])
 def delete_user(user_id):
     """
@@ -73,17 +72,15 @@ def delete_user(user_id):
     db.session.commit()
     return success_response(user.serialize())
 
-
-
 # -- ride ROUTES ---------------------------------------------------
 
-@app.route("/api/users/<int:user_id>/ride/", methods=["POST"])
-def create_ride(user_id):
+@app.route("/api/users/<int:host_id>/ride/", methods=["POST"])
+def create_ride(host_id):
     """
     Endpoint for creating an ride
     for a task by id
     """
-    user = User.query.filter_by(id=user_id).first()
+    user = User.query.filter_by(id=host_id).first()
     if user is None:
         return failure_response("user not found!")
     body = json.loads(request.data)
@@ -94,31 +91,29 @@ def create_ride(user_id):
     new_ride = Ride(
         date = date,
         destination = destination,
-        # users = user
     )
+    new_ride.host.append(user)
     db.session.add(new_ride)
-    user.rides.append(new_ride)
     db.session.commit()
     return success_response(new_ride.serialize())
 
-@app.route("/api/users/<int:user_id>/add/", methods=["POST"])
-def assign_ride(user_id):
+@app.route("/api/users/<int:rider_id>/add/", methods=["POST"])
+def assign_ride(rider_id):
     """
     Endpoint for assigning a ride request
     to a ride by id
     """
-    user = User.query.filter_by(id=user_id).first()
+    user = User.query.filter_by(id=rider_id).first()
     if user is None:
         return failure_response("user not found!")
-    # process request body if user IS found
     body = json.loads(request.data)
     ride_id = body.get("ride_id")
-    # create new rides object if it doesnt exist,
-    # otherwise assign user to existing rides
     ride = Ride.query.filter_by(id=ride_id).first()
+    if ride in user.hosts:
+        return failure_response("Cannot add the host to the ride!")
     if ride is None:
-        failure_response("ride not found!")
-    user.rides.append(ride)
+        return failure_response("ride not found!")
+    ride.riding.append(user)
     db.session.commit()
     return success_response(user.serialize())
 
@@ -131,6 +126,8 @@ def get_ride(ride_id):
     if ride is None:
         return failure_response("ride not found!")
     return success_response(ride.serialize())
+
+#--- Message routes -----------------------------------------------------------------------------------
 
 @app.route("/api/users/<int:sender_id>/messages/<int:recipient_id>/", methods=["POST"])
 def create_message(sender_id, recipient_id):
