@@ -3,8 +3,13 @@ from flask import Flask
 
 db = SQLAlchemy()
 
-association_table = db.Table(
-    "association", db.Model.metadata,
+host_assoc = db.Table(
+    "host_assoc", db.Model.metadata,
+    db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("ride_id", db.Integer, db.ForeignKey("rides.id")),
+)
+rider_assoc = db.Table(
+    "rider_assoc", db.Model.metadata,
     db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
     db.Column("ride_id", db.Integer, db.ForeignKey("rides.id")),
 )
@@ -27,14 +32,16 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     netid = db.Column(db.String, nullable = False)
     name = db.Column(db.String, nullable = False)
-    rides = db.relationship("Ride", secondary=association_table, back_populates="users")
+    hosts = db.relationship("Ride", secondary=host_assoc, back_populates="host")
+    riders = db.relationship("Ride", secondary=rider_assoc, back_populates="riding")
     senders = db.relationship("Message", secondary=sender_assoc, back_populates="sender")
     recipients = db.relationship("Message", secondary=recipient_assoc, back_populates="recipient")
 
     def __init__(self, **kwargs):
         self.netid = kwargs.get("netid", "")
         self.name = kwargs.get("name", "")
-        self.rides = []
+        self.hosts = []
+        self.riders = []
         self.senders = []
         self.recipients = []
     
@@ -49,11 +56,23 @@ class User(db.Model):
             user = {"id": i.serialize()["id"], "time": i.serialize()["time"], "text": i.serialize()["text"]}
             recipients.append(user)
 
+        hosts = []
+        for i in self.hosts:
+            user = {"id": i.serialize()["id"], "date": i.serialize()["date"], "destination": i.serialize()["destination"]}
+            hosts.append(user)
+
+        riders = []
+        for i in self.riders:
+            user = {"id": i.serialize()["id"], "date": i.serialize()["date"], "destination": i.serialize()["destination"]}
+            riders.append(user)
         return {
             "id": self.id,
             "netid": self.netid,
             "name": self.name,
-            "rides": [a.simple_serialize() for a in self.rides],
+            "rides": {
+                "hosting": hosts,
+                "riding": riders
+            },
             "messages": {
                 "sender": senders,
                 "recipient": recipients
@@ -72,18 +91,26 @@ class Ride(db.Model): #Many to Many relationship with User
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     date = db.Column(db.String, nullable = False)
     destination = db.Column(db.Integer, nullable = False)
-    users = db.relationship("User", secondary=association_table, back_populates="rides")
+    host = db.relationship("User", secondary=host_assoc, back_populates="hosts")
+    riding = db.relationship("User", secondary=rider_assoc, back_populates="riders")
 
     def __init__(self, **kwargs):
         self.date = kwargs.get("date", "")
         self.destination = kwargs.get("destination", "") 
+        self.host = []
+        self.riding = []
 
     def serialize(self):
+        riders = []
+        for i in self.riding:
+            rider = i.simple_serialize()
+            riders.append(rider)
         return {
             "id": self.id,
             "date": self.date,
             "destination": self.destination,
-            "users": [c.simple_serialize() for c in self.users]
+            "host": self.host[0].simple_serialize(),
+            "riders": riders
         }
     
     def simple_serialize(self):
@@ -122,3 +149,4 @@ class Message(db.Model): #Many to many relationship with User
             "time": self.time,
             "text": self.text
         }
+
