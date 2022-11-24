@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var action: Int? = 0
     var body: some View {
         //        Color.blue
         //            .ignoresSafeArea()
@@ -41,7 +42,7 @@ struct ContentView: View {
                                 .padding(.top, 20)
                             
                             
-                            TextField("Password",text:$username)
+                            TextField("Password",text:$password)
                                 .padding(.top, 20)
                             
                         }
@@ -57,17 +58,47 @@ struct ContentView: View {
                     Color.red
                         .ignoresSafeArea()
                         .foregroundColor(.black)
-                    ZStack{
-                        Color.blue
-                            .frame(width:80,height:10)
-                            .clipShape(Capsule())
-                        
-                        Text("Sign up")
-                            .frame(width:80,height:10)
-                            .padding()
-                            .background(.blue.opacity(1))
-                            .cornerRadius(15)
+                    HStack{
+                        ZStack{
+                            Color.blue
+                                .frame(width:80,height:10)
+                                .clipShape(Capsule())
+                            
+                            Text("Sign up")
+                                .frame(width:80,height:10)
+                                .padding()
+                                .background(.blue.opacity(1))
+                                .cornerRadius(15)
+//                                .onTapGesture {
+//                                    pass
+//                                }
+                        }
+                        ZStack{
+                            VStack {
+                                NavigationLink(destination: HomeView(username:$username, password: $password)
+                                            .navigationBarTitle("")
+                                            .navigationBarHidden(true), tag: 1, selection: $action) {
+                                
+                                          }
+                                          
+                                          }
+                            
+                            Color.blue
+                                .frame(width:80,height:10)
+                                .clipShape(Capsule())
+                            Text("Sign in")
+                                .frame(width:80,height:10)
+                                .padding()
+                                .background(.blue.opacity(1))
+                                .cornerRadius(15)
+                                .onTapGesture {
+                                    self.action = 1
+                                }
+                        }
                     }
+                  
+                                                       
+                                                   
                 }
                 
                 
