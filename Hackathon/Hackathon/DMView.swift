@@ -33,11 +33,42 @@ struct DMView: View {
             }
             ZStack(alignment: .bottom)
             {
+                
+//                Rectangle()
+//                    .frame(width: .infinity, height: 40)
+                    Color.white
+                    
+                    
+                        .frame(width: 350, height: 40)
+                    
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.black, lineWidth: 2))
+                    Image(systemName: "arrow.up.circle")
+                    .font(Font.system(size: 30, weight: .semibold))
+                        .offset(x: 140, y:0)
+                        
+                        .frame(width: 350, height: 40)
+                        .background(.black.opacity(0.4))
+                        .cornerRadius(15)
                 TextField("Enter Message",text: $newMessageBody)
-                    .padding()
-                    .frame(width: .infinity, height: 40)
-                    .background(.black.opacity(0.4))
-                    .cornerRadius(15)
+                                    .padding()
+                                    .frame(width: 300, height: 40)
+                                    
+//                                    .background(.blue.opacity(0.4))
+                                    .cornerRadius(15)
+                                    .offset(x: -25, y:0)
+                    
+                    
+//                    .cornerRadius(1)
+                
+//                Color.gray
+                
+//                TextField("Enter Message",text: $newMessageBody)
+//                    .padding()
+//                    .frame(width: .infinity, height: 40)
+//                    .background(.black.opacity(0.4))
+//                    .cornerRadius(15)
                     
             }
         }

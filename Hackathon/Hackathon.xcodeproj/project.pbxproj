@@ -19,6 +19,7 @@
 		6C9B48D6292EA1C200A6D113 /* DMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9B48D5292EA1C200A6D113 /* DMView.swift */; };
 		6C9B48D8292EA25500A6D113 /* TestDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9B48D7292EA25500A6D113 /* TestDM.swift */; };
 		6C9B48DC292EA8FD00A6D113 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9B48DB292EA8FD00A6D113 /* MessageCell.swift */; };
+		6C9B48DE2932BE8200A6D113 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9B48DD2932BE8200A6D113 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		6C9B48D5292EA1C200A6D113 /* DMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMView.swift; sourceTree = "<group>"; };
 		6C9B48D7292EA25500A6D113 /* TestDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDM.swift; sourceTree = "<group>"; };
 		6C9B48DB292EA8FD00A6D113 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		6C9B48DD2932BE8200A6D113 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				6C9B48D5292EA1C200A6D113 /* DMView.swift */,
 				6C9B48DB292EA8FD00A6D113 /* MessageCell.swift */,
 				6C9B48D7292EA25500A6D113 /* TestDM.swift */,
+				6C9B48DD2932BE8200A6D113 /* NetworkManager.swift */,
 				6C7F5EA42925F0250034DA8E /* Assets.xcassets */,
 				6C7F5EA62925F0250034DA8E /* Preview Content */,
 			);
@@ -276,6 +279,7 @@
 				6C9B48D4292E9F9D00A6D113 /* Message.swift in Sources */,
 				6C9B48D8292EA25500A6D113 /* TestDM.swift in Sources */,
 				6C7F5EA32925F0210034DA8E /* ContentView.swift in Sources */,
+				6C9B48DE2932BE8200A6D113 /* NetworkManager.swift in Sources */,
 				6C7F5EA12925F0210034DA8E /* HackathonApp.swift in Sources */,
 				6C9B48D6292EA1C200A6D113 /* DMView.swift in Sources */,
 				6C9B48DC292EA8FD00A6D113 /* MessageCell.swift in Sources */,
