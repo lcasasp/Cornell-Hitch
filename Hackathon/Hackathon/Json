@@ -1,0 +1,55 @@
+{
+    users =     (
+                {
+            email = "bj263@cornell.edu";
+            id = 1;
+            messages =             {
+                recipient =                 (
+                );
+                sender =                 (
+                );
+            };
+            name = "Borjan Javonov";
+            rides =             {
+                hosting =                 (
+                );
+                riding =                 (
+                );
+            };
+        },
+                {
+            email = "lcc79@cornell.edu";
+            id = 2;
+            messages =             {
+                recipient =                 (
+                );
+                sender =                 (
+                );
+            };
+            name = "Lucas Casas";
+            rides =             {
+                hosting =                 (
+                );
+                riding =                 (
+                );
+            };
+        },
+                {
+            email = "lcc79@cornell.edu";
+            id = 3;
+            messages =             {
+                recipient =                 (
+                );
+                sender =                 (
+                );
+            };
+            name = "Lucas Casas";
+            rides =             {
+                hosting =                 (
+                );
+                riding =                 (
+                );
+            };
+        }
+    );
+}

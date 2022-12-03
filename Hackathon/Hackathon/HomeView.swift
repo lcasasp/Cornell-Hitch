@@ -1,55 +1,92 @@
+////
+////  ViewController.swift
+////  Hackathon
+////
+////  Created by Marcel Pantin on 11/30/22.
+////
 //
-//  HomeView.swift
-//  Hackathon
+//import UIKit
+//import SwiftUI
 //
-//  Created by Josh Magazine on 11/22/22.
+//class HomeView: UIViewController {
+//    let loginButton = UIButton()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.backgroundColor = .systemMint
+//        
+//        loginButton.setTitle("Log in", for: .normal)
+//        loginButton.setTitleColor(.white, for: .normal)
+//        loginButton.backgroundColor = .systemBlue
+//        loginButton.layer.cornerRadius = 10
+//        loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
+//        loginButton.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(loginButton)
+//        
+//        setUpConstraints()
+//        
+//    }
+//    
+//    
+//    @objc
+//    func didTapLogin(){
+//        //
+//        let tabBarVC = UITabBarController()
+//        let HVC = UINavigationController(rootViewController: CreateRideViewController())
+//        let SVC = UINavigationController(rootViewController: SettingVC())
+//        let CVC = UINavigationController(rootViewController: ChatVC())
+//        
+//        HVC.title = "Home"
+//        SVC.title = "Settings"
+//        CVC.title = "Chat"
+//        
+//        
+//        tabBarVC.setViewControllers([HVC,CVC,SVC], animated: false)
+//        tabBarVC.modalPresentationStyle = .fullScreen
+//        present(tabBarVC, animated: true)
+//        
+//        
+//        
+//        guard let items = tabBarVC.tabBar.items else {
+//            return
+//        }
+//        
+//        let images = ["house","message.circle","gear"]
+//        for i in 0..<items.count {
+//            items[i].image = UIImage(systemName: images[i])
+//        }
+//        
+//        
+//    }
+//    
+//    func setUpConstraints(){
+//        let BHeigth: CGFloat = 50
+//        let BWidth: CGFloat = 300
+//        NSLayoutConstraint.activate([
+//            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            loginButton.widthAnchor.constraint(equalToConstant: BWidth),
+//            loginButton.heightAnchor.constraint(equalToConstant: BHeigth),
+//            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+//            
+//        ])
+//    }
 //
-
-import SwiftUI
-
-struct HomeView: View {
-    @Binding var username: String
-    @Binding var password: String
-    var body: some View {
-        NavigationStack{
-            VStack{
-                ZStack(alignment: .top)
-                {
-                    Color.green
-                        .ignoresSafeArea()
-                    Text("Dashboard")
-                        .foregroundColor(.black)
-                        .padding()
-                        .font(.system(size: 60, design: .monospaced))
-                    Spacer()    
-                    ZStack{
-                        Text("Welcome, " + username + "!")
-                            .foregroundColor(.black)
-                            .padding()
-                            .font(.system(size: 60, design: .monospaced))
-                        
-                    }
-                }
-                ZStack
-                {
-                    Color.yellow
-                        .ignoresSafeArea()
-                    
-                    
-                }
-                ZStack(alignment: .bottom)
-                {
-                    Color.black
-                        .frame(width:80,height:10)
-                        
-                }
-            }
-        }
-    }
-}
-
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(username: , password: <#T##Binding<String>#>)
+//
+//}
+//
+//
+//
+//
+//class SettingVC: UIViewController {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.backgroundColor = .white
 //    }
 //}
+//
+//class ChatVC: UIViewController {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.backgroundColor = .systemCyan
+//    }
+//}
+//
