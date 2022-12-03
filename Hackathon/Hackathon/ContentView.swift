@@ -38,8 +38,9 @@ struct ContentView: View {
                             Text("Cornell Hitch")
                                 .foregroundColor(.black)
                                 .padding()
+                                .multilineTextAlignment(.center)
                             
-                                .font(.system(size: 60, design: .monospaced))
+                                .font(.system(size: 40, design: .monospaced))
                         
                                 .offset(y:y)
                                 
@@ -54,6 +55,7 @@ struct ContentView: View {
                                             }
                         
                     }
+                    .frame(width:.infinity)
                     ZStack(alignment: .bottom){
                         HStack{
                             Spacer()

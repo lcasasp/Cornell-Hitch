@@ -70,7 +70,7 @@ struct DMView: View {
             }
             
         }
-        .navigationBarBackButtonHidden(true)
+       
     }
     
 }

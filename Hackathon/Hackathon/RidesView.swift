@@ -18,7 +18,7 @@ struct RidesView: View {
             
             ScrollView{
                 ForEach(rides.indices, id: \.self) {
-                    Text("Ride \($0):")
+                    Text("Ride \($0+1):")
                     Spacer()
                         .frame(height:15)
                     Text("Destination: \(rides[$0][0])")
