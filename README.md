@@ -9,6 +9,6 @@ Cornell hitch is an app that uses google to authenticate cornell users (through 
 Backend requirements:
    Using Flask, I have made a db file with classes User, Ride, and Message in order to form an API that uses many to many relationships to best gather all the data for front-end. Additionally, googlemaps API's are used to calculate distance among the destinations selected and thus giving front end space to handle cost estimates. 
    I have fully deployed the server, but there is one thing to note. Login routes will not work with OAuth because the server does not use a top level domain. However, if testing on a local url, the Oauth works perfectly and uses organization only specifications to only allow cornell students to add to database.
-   In order to fix OAuth for the deployment stage, I would have to purchase a top level domain and host the server there instead, but for the scope of the class I felt that was not necessary. I hope the OAuth implementation makes sense even if it cannot be graded based on functionality.
+   In order to fix OAuth for the deployment stage, a top level domain would be needed for deployment to host the server there instead, but for the scope of this project I felt that was not necessary. 
    
 
